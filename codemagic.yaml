@@ -12,18 +12,11 @@ workflows:
       events:
         - push
         - pull_request
-        - tag
       branch_patterns:
         - pattern: main
           include: true
           source: true
     scripts:
-      - name: Check for "publish" comment
-        script: |
-          if [[ "$CM_TRIGGER_SOURCE" == "comment_added" && "$CM_COMMIT_MESSAGE" != *"publish"* ]]; then
-            echo "No 'publish' comment found. Skipping build."
-            exit 0
-          fi
       - name: Install Flutter dependencies
         script: flutter pub get
       - name: Build APK
@@ -33,7 +26,16 @@ workflows:
     artifacts:
       - build/**/outputs/**/*.apk
       - build/ios/iphoneos/*.app
-    publishing:
-      email:
-        recipients:
-          - "kartik@skycap.co.in"
+
+publishing:
+  email:
+    recipients:
+      - "kartik@skycap.co.in"
+    notify:
+      success: true
+      failure: true
+    release_notes: |
+      🚀 **New Release: $CM_BUILD_ID**
+      - Built from branch: $CM_BRANCH
+      - Commit: $CM_COMMIT_MESSAGE
+      - Build URL: $CM_BUILD_URL
