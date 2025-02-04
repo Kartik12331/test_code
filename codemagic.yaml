@@ -31,7 +31,7 @@ workflows:
       - name: Build iOS
         script: flutter build ios --no-codesign
     artifacts:
-      - build/**/outputs/**/*.apk
+      - build/app/outputs/flutter-apk/app-release.apk
       - build/ios/iphoneos/*.app
     publishing:
       email:
@@ -40,4 +40,3 @@ workflows:
         notify:
           success: true
           failure: true
-
