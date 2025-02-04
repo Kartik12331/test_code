@@ -5,19 +5,26 @@ import 'dart:async';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 import 'List_view/list_vew.dart';
-
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+
+      theme: ThemeData(
+        // backgroundColor: Colors.red,
+        scaffoldBackgroundColor: Colors.transparent, // Scaffold background color
+
+      ),
+
+
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-
       home: MyHomePage(title: 'Animated Navigation Bottom Bar'),
     );
   }
@@ -33,7 +40,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-
   var _bottomNavIndex = 0; //default index of a first screen
 
   late AnimationController _fabAnimationController;
@@ -84,11 +90,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
     Future.delayed(
       Duration(seconds: 1),
-          () => _fabAnimationController.forward(),
+      () => _fabAnimationController.forward(),
     );
     Future.delayed(
       Duration(seconds: 1),
-          () => _borderRadiusAnimationController.forward(),
+      () => _borderRadiusAnimationController.forward(),
     );
   }
 
@@ -113,71 +119,81 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: Colors.black,
-      extendBody: true,
+
+      // backgroundColor: Colors.orange,
+      // extendBody: true,
       appBar: AppBar(
         title: Text(
           widget.title,
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: NotificationListener<ScrollNotification>(
+      body: const NotificationListener<ScrollNotification>(
         // onNotification: onScrollNotification,
-        child: Cards(),
+        child:
+            // Text("Working")
+            Cards(),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.brightness_3,
-
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: FloatingActionButton(
+          child: Icon(
+            Icons.brightness_3,
+          ),
+          onPressed: () {
+            _fabAnimationController.reset();
+            _borderRadiusAnimationController.reset();
+            _borderRadiusAnimationController.forward();
+            _fabAnimationController.forward();
+          },
         ),
-        onPressed: () {
-          _fabAnimationController.reset();
-          _borderRadiusAnimationController.reset();
-          _borderRadiusAnimationController.forward();
-          _fabAnimationController.forward();
-        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar.builder(
-        itemCount: iconList.length,
-        tabBuilder: (int index, bool isActive) {
+      bottomNavigationBar: Container(
+        // color: Colors.transparent,
+        // height: 200,
+        // width: ,
+        child: AnimatedBottomNavigationBar.builder(
+          // borderColor: Colors.red,
 
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                iconList[index],
-                size: 24,
-                color: Colors.red,
-              ),
-              const SizedBox(height: 4),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child:Text("Home"),
-              )
-            ],
-          );
-        },
-        backgroundColor: Colors.white,
-        activeIndex: _bottomNavIndex,
-        splashColor: Colors.blue,
-        notchAndCornersAnimation: borderRadiusAnimation,
-        splashSpeedInMilliseconds: 300,
-        notchSmoothness: NotchSmoothness.defaultEdge,
-        gapLocation: GapLocation.center,
-        leftCornerRadius: 32,
-        rightCornerRadius: 32,
-        onTap: (index) => setState(() => _bottomNavIndex = index),
-        hideAnimationController: _hideBottomBarAnimationController,
-        // shadow: BoxShadow(
-        //   offset: Offset(0, 1),
-        //   blurRadius: 12,
-        //   spreadRadius: 0.5,
-        //   color: Colors.blue,
-        // ),
+          itemCount: iconList.length,
+          tabBuilder: (int index, bool isActive) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  iconList[index],
+                  size: 24,
+                  color: Colors.red,
+                ),
+                const SizedBox(height: 4),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text("Home"),
+                )
+              ],
+            );
+          },
+          backgroundColor: Colors.white,
+          activeIndex: _bottomNavIndex,
+          splashColor: Colors.blue,
+          notchAndCornersAnimation: borderRadiusAnimation,
+          splashSpeedInMilliseconds: 300,
+          notchSmoothness: NotchSmoothness.defaultEdge,
+          gapLocation: GapLocation.center,
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          onTap: (index) => setState(() => _bottomNavIndex = index),
+          hideAnimationController: _hideBottomBarAnimationController,
+          // shadow: BoxShadow(
+          //   offset: Offset(0, 1),
+          //   blurRadius: 12,
+          //   spreadRadius: 0.5,
+          //   color: Colors.blue,
+          // ),
+        ),
       ),
     );
   }
@@ -239,9 +255,8 @@ class _NavigationScreenState extends State<NavigationScreen>
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      color: Colors.black,
+      // color: Colors.black,
       child: ListView(
         children: [
           SizedBox(height: 64),

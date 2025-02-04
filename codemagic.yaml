@@ -19,6 +19,13 @@ workflows:
     scripts:
       - name: Install Flutter dependencies
         script: flutter pub get
+      - name: Generate Release Notes
+        script: |
+          echo "**New Release: $CM_BUILD_ID**" > release_notes.txt
+          echo "- Branch: $CM_BRANCH" >> release_notes.txt
+          echo "- Commit: $CM_COMMIT_MESSAGE" >> release_notes.txt
+          echo "- Build URL: $CM_BUILD_URL" >> release_notes.txt
+          export CM_RELEASE_NOTES="$(cat release_notes.txt)"
       - name: Build APK
         script: flutter build apk --release
       - name: Build iOS
@@ -26,16 +33,11 @@ workflows:
     artifacts:
       - build/**/outputs/**/*.apk
       - build/ios/iphoneos/*.app
+    publishing:
+      email:
+        recipients:
+          - "kartik@skycap.co.in"
+        notify:
+          success: true
+          failure: true
 
-publishing:
-  email:
-    recipients:
-      - "kartik@skycap.co.in"
-    notify:
-      success: true
-      failure: true
-    release_notes: |
-      **New Release: $CM_BUILD_ID**
-      - Built from branch: $CM_BRANCH
-      - Commit: $CM_COMMIT_MESSAGE
-      - Build URL: $CM_BUILD_URL

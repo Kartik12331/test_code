@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
     navigatorKey:navigatorKey ,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        bottomSheetTheme:const BottomSheetThemeData(backgroundColor: Colors.transparent) ,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(backgroundColor: Colors.transparent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellowAccent),
         useMaterial3: true,
       ),
       home:HomePage(),
