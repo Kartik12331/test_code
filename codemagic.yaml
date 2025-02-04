@@ -24,8 +24,8 @@ workflows:
           echo "**New Release: $CM_BUILD_ID**" > release_notes.txt
           echo "- Branch: $CM_BRANCH" >> release_notes.txt
           echo "- Commit: $CM_COMMIT_MESSAGE" >> release_notes.txt
-          echo "- Build URL: $CM_BUILD_URL" >> release_notes.txt
-          export CM_RELEASE_NOTES="$(cat release_notes.txt)"
+#          echo "- Build URL: $CM_BUILD_URL" >> release_notes.txt
+#          export CM_RELEASE_NOTES="$(cat release_notes.txt)"
       - name: Build APK
         script: flutter build apk --release
       - name: Build iOS
