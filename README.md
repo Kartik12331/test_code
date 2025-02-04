@@ -1,6 +1,9 @@
 # machine_test
 
-A new Flutter project.
+A new Flutter project Demo Code Magic.
+
+![Demo Image](assets/img.png)
+![Demo Image](assets/Screenshot_1738664522.png)
 
 ## Getting Started
 
