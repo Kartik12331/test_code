@@ -35,7 +35,7 @@ publishing:
       success: true
       failure: true
     release_notes: |
-      "🚀" **New Release: $CM_BUILD_ID**
+      **New Release: $CM_BUILD_ID**
       - Built from branch: $CM_BRANCH
       - Commit: $CM_COMMIT_MESSAGE
       - Build URL: $CM_BUILD_URL
