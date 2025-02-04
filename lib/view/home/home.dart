@@ -1,4 +1,4 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:machine_test/utils/color.dart';
@@ -6,7 +6,6 @@ import 'package:machine_test/utils/message.dart';
 import 'package:machine_test/utils/static_list.dart';
 import 'package:machine_test/utils/storage_manager/shar_pref.dart';
 import 'package:machine_test/view/home/widget/third_tab.dart';
-
 import '../../bloc/add_industry_bloc.dart';
 import '../../bloc/add_industry_event.dart';
 import '../../bloc/add_industry_state.dart';
@@ -55,7 +54,7 @@ for(var i =0; i<alreadySelected.length;i++ ){
 
 
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+
 
     return BlocBuilder<AddIndustriesBloc, AddIndustriesState>(
       builder: (context, state)  {
@@ -81,7 +80,7 @@ for(var i =0; i<alreadySelected.length;i++ ){
                         fontSize: 18,
                         fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 11,
                   ),
                   const Text(
@@ -97,7 +96,7 @@ for(var i =0; i<alreadySelected.length;i++ ){
                 "Select At Least One Industry",
                 style: TextStyle(color: AppColor.blackShade),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 21,
               ),
               Wrap(
@@ -110,7 +109,7 @@ for(var i =0; i<alreadySelected.length;i++ ){
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20.0, vertical: 13.0),
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                                 horizontal: 2, vertical: 7),
                             decoration: BoxDecoration(
                               color:StaticList.value[i].selected == true
@@ -158,7 +157,7 @@ for(var i =0; i<alreadySelected.length;i++ ){
                     return;
                   }
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => AddVideo()));
+                      .push(MaterialPageRoute(builder: (_) => const AddVideo()));
                 },
               ),
               SizedBox(

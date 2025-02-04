@@ -44,9 +44,7 @@ class _AddVideoState extends State<AddVideo> {
                       fontSize: 18,
                       fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
-                  height: 11,
-                ),
+                buildSizedBox(),
                 const Text(
                   "sample Content",
                   style: TextStyle(
@@ -56,17 +54,13 @@ class _AddVideoState extends State<AddVideo> {
                 ),
               ],
             ),
-            SizedBox(
-              height: 11,
-            ),
+            buildSizedBox(),
             Text(
               "Please Upload high-quality context \nthat showcase your work",
               textAlign: TextAlign.center,
               style: TextStyle(color: AppColor.blackShade),
             ),
-            SizedBox(
-              height: 21,
-            ),
+            buildSizedBox(),
             Container(
               height: height / 4,
               width: width / 3,
@@ -76,13 +70,13 @@ class _AddVideoState extends State<AddVideo> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.video_call,
                     size: 41,
                   ),
                   InkWell(
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 11),
+                      margin: const EdgeInsets.symmetric(horizontal: 11),
                       alignment: Alignment.center,
                       width: width / 5,
                       height: height / 41,
@@ -96,8 +90,6 @@ class _AddVideoState extends State<AddVideo> {
                     ),
                     onTap: () {
                       _showPicker(context: context);
-
-
                     },
                   ),
                 ],
@@ -107,41 +99,64 @@ class _AddVideoState extends State<AddVideo> {
               "Upload Your Video",
               style: TextStyle(color: AppColor.blackShade, fontSize: 11),
             ),
-            Spacer(),
+            const Spacer(),
             Align(
                 alignment: Alignment.topLeft,
-                child: Text("Video ${videoFile.length}/${videoFile.length}",style: TextStyle(fontSize: 18),)),
-            SizedBox(height: height/31,),
+                child: Text(
+                  "Video ${videoFile.length}/${videoFile.length}",
+                  style: const TextStyle(fontSize: 18),
+                )),
+            SizedBox(
+              height: height / 31,
+            ),
             Row(
               children: [
-                for(var i=0;i<videoFile.length;i++)
-
-                Row(crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text((i+1).toString(),style: TextStyle(fontSize: 19),),
-                    InkWell(
-                      child: Container(
-                        height: height / 6,
-                        width: width / 3,
-                        color: Colors.red,
-                        child: VideoApp( videoFile: videoFile[i], isPreview: true,),
+                for (var i = 0; i < videoFile.length; i++)
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        (i + 1).toString(),
+                        style: const TextStyle(fontSize: 19),
                       ),
-                      onTap: (){
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (_) => VideoApp(videoFile: videoFile[i], isPreview: false,)));
-                      },
-                    ),
-                  ],
-                ),
+                      InkWell(
+                        child: Container(
+                          height: height / 6,
+                          width: width / 3,
+                          color: Colors.red,
+                          child: VideoApp(
+                            videoFile: videoFile[i],
+                            isPreview: true,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => VideoApp(
+                                    videoFile: videoFile[i],
+                                    isPreview: false,
+                                  )));
+                        },
+                      ),
+                    ],
+                  ),
               ],
             ),
-            SizedBox(height: height/21,),
-
-            NextButton(onPress: (){},)
+            SizedBox(
+              height: height / 21,
+            ),
+            NextButton(
+              onPress: () {},
+            )
           ],
         ),
       ),
     );
+  }
+
+  SizedBox buildSizedBox() {
+    return const SizedBox(
+            height: 21,
+          );
   }
 
   void _showPicker({
@@ -191,7 +206,7 @@ class _AddVideoState extends State<AddVideo> {
     setState(
       () {
         galleryFile = File(pickedFile!.path);
-            },
+      },
     );
   }
 }
