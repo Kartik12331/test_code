@@ -190,13 +190,8 @@ class _AddVideoState extends State<AddVideo> {
     videoFile.add(xfilePick!.path.toString());
     setState(
       () {
-        if (xfilePick != null) {
-          galleryFile = File(pickedFile!.path);
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(// is this context <<<
-              const SnackBar(content: Text('Nothing is selected')));
-        }
-      },
+        galleryFile = File(pickedFile!.path);
+            },
     );
   }
 }
