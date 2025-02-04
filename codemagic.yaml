@@ -4,7 +4,7 @@ workflows:
     instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
-      flutter: stable
+      flutter: 3.16.6
       xcode: latest
       vars:
         BUNDLE_ID: "com.industry.app"
@@ -12,11 +12,18 @@ workflows:
       events:
         - push
         - pull_request
+        - tag
       branch_patterns:
         - pattern: main
           include: true
           source: true
     scripts:
+      - name: Check for "publish" comment
+        script: |
+          if [[ "$CM_TRIGGER_SOURCE" == "comment_added" && "$CM_COMMIT_MESSAGE" != *"publish"* ]]; then
+            echo "No 'publish' comment found. Skipping build."
+            exit 0
+          fi
       - name: Install Flutter dependencies
         script: flutter pub get
       - name: Build APK
