@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FLUTTER_HOME = "${HOME}/flutter"
-        ANDROID_HOME = "${HOME}/Library/Android/sdk"
+        FLUTTER_HOME = "/root/flutter"
+        ANDROID_HOME = "/root/Android/Sdk"  // Update to the correct Android SDK path
         PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:$PATH"
     }
 
