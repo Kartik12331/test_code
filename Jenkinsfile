@@ -44,7 +44,7 @@ pipeline {
                      <p>📥 <a href="${env.BUILD_URL}artifact/build/app/outputs/flutter-apk/app-release.apk">Download APK</a></p>
                      <p>🔗 <a href="${env.BUILD_URL}">View Build Details</a></p>
                      """,
-                     recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+//                      recipientProviders: [[$class: 'DevelopersRecipientProvider']],
                      to: 'Kartik@skycap.co.in',
                      mimeType: 'text/html'
         }
@@ -57,7 +57,7 @@ pipeline {
                      <p>❌ Build failed. Check logs for details.</p>
                      <p>🔗 <a href="${env.BUILD_URL}/console">View Console Output</a></p>
                      """,
-                     recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+//                      recipientProviders: [[$class: 'DevelopersRecipientProvider']],
                      to: 'Kartik@skycap.co.in',
                      mimeType: 'text/html'
         }
