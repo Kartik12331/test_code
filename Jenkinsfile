@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         FLUTTER_HOME = "/root/flutter"
-        ANDROID_HOME = "/root/Android/Sdk"  // Update to the correct Android SDK path
-//         PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:$PATH"
+        ANDROID_HOME = "/root/Android/Sdk"  // Ensure this path is correct
+        PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:$PATH"
     }
 
     stages {
