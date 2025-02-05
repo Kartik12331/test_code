@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         FLUTTER_HOME = "/root/flutter"
-        ANDROID_HOME = "/root/Android/Sdk"  // Ensure this path is correct
+        ANDROID_HOME = "/root/Android/Sdk"
         PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin:$PATH"
     }
 
@@ -16,14 +16,14 @@ pipeline {
 
         stage('Setup Flutter') {
             steps {
-                sh 'flutter doctor'
-                sh 'flutter pub get'
+                sh 'sudo /root/flutter/bin/flutter doctor'
+                sh 'sudo /root/flutter/bin/flutter pub get'
             }
         }
 
         stage('Build APK') {
             steps {
-                sh 'flutter build apk --release'
+                sh 'sudo /root/flutter/bin/flutter build apk --release'
             }
         }
 
