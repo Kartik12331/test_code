@@ -50,7 +50,6 @@ pipeline {
                      recipientProviders: [[$class: 'DevelopersRecipientProvider']],
                      to: 'Kartik@skycap.co.in',
                      mimeType: 'text/html'
-                     debug: true
         }
 
         failure {
@@ -64,7 +63,6 @@ pipeline {
                      recipientProviders: [[$class: 'DevelopersRecipientProvider']],
                      to: 'Kartik@skycap.co.in',
                      mimeType: 'text/html'
-                     debug: true
         }
     }
 }
