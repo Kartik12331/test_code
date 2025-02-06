@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FLUTTER_HOME = "/opt/flutter"  // ✅ Move Flutter out of /root/
-        ANDROID_HOME = "/opt/android-sdk"  // ✅ Update to correct SDK location
+        FLUTTER_HOME = "/opt/flutter"
+        ANDROID_HOME = "/opt/android-sdk"
         PATH = "${FLUTTER_HOME}/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/emulator:$PATH"
     }
 
