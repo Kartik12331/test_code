@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh 'whoami'  // Ensure the correct user is running the build
                 sh 'df -h'  // Check available disk space
-//                 sh 'flutter build apk --release --verbose'  // Run build with verbose logging
+                sh 'flutter build apk --release --verbose'  // Run build with verbose logging
             }
         }
 
