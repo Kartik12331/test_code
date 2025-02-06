@@ -48,7 +48,7 @@ pipeline {
                      <p>🔗 <a href="${env.BUILD_URL}">View Build Details</a></p>
                      """,
                      recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                     to: 'satyam@skycap.co.in',
+                     to: 'kartik@skycap.co.in',
                      mimeType: 'text/html'
         }
 
@@ -61,7 +61,7 @@ pipeline {
                      <p>🔗 <a href="${env.BUILD_URL}/console">View Console Output</a></p>
                      """,
                      recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                     to: 'satyam@skycap.co.in',
+                     to: 'kartik@skycap.co.in',
                      mimeType: 'text/html'
         }
     }
